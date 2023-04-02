@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package music;
+
+service MusicService {
+  rpc CreateMusic(CreateMusicRequest) returns (MusicResponse) {}
+  rpc ReadMusic(ReadMusicRequest) returns (MusicResponse) {}
+  rpc UpdateMusic(UpdateMusicRequest) returns (MusicResponse) {}
+  rpc DeleteMusic(DeleteMusicRequest) returns (MusicResponse) {}
+}
+
+message CreateMusicRequest {
+  string title = 1;
+  string artist = 2;
+  string format = 3;
+  float price = 4;
+}
+
+message ReadMusicRequest {
+  string id = 1;
+}
+
+message UpdateMusicRequest {
+  string id = 1;
+  string title = 2;
+  string artist = 3;
+  string format = 4;
+  float price = 5;
+}
+
+message DeleteMusicRequest {
+  string id = 1;
+}
+
+message MusicResponse {
+  string id = 1;
+  string title = 2;
+  string artist = 3;
+  string format = 4;
+  float price = 5;
+  string error = 6;
+}
