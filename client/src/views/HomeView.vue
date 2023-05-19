@@ -19,6 +19,7 @@
       </div>
       <div class="card-body">
         <input class="form-control" type="text" v-model="App.transcript" />
+        <button class="button-name" @click="App.recommendationTranscript()">Search</button>
       </div>
     </div>
     <div v-if="App.transcript">
@@ -57,7 +58,7 @@ export default {
     }
   },
   mounted() {
-  
+    //this.App.recommendationTranscript();
   }
 }
 </script>

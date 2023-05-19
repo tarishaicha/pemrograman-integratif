@@ -51,12 +51,8 @@ export const useApp = defineStore({
             }));
 
             this.items = results;
-            // this.slug = results[0].slug; // assign the slug value to the data property
             console.log(this.items);
           });
-        // if (result.isFinal) {
-        //   this.transcript += result[0].transcript;
-        // }
       };
 
       recognition.onerror = (event) => {
@@ -72,17 +68,31 @@ export const useApp = defineStore({
       }
     },
 
+    recommendationTranscript() {
+      this.items = [];
+      const q = this.transcript;
+      console.log(this.transcript);
+      fetch(`http://localhost:3000/api/search?q=${q}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const results = data.result.map((obj) => ({
+            name: obj.name,
+            base_price: obj.base_price,
+            image_url: obj.image_url,
+            selling_unit: obj.selling_unit,
+            slug: obj.slug,
+          }))
+          this.items = results;
+          console.log(this.items);
+        });
+    },
+
     clearTranscript() {
       this.transcript = "";
     },
 
-    // selectSlug(slug) {
-    // this.selectedSlug = slug;
-    // },
-
     detailTranscript(slug) {
       const that = this
-      // this.detail = true;
       this.details = {}
 
       const q = slug;
