@@ -3,25 +3,24 @@
     <h1>
       <div>
         <i
-          class="fa fa-user-md"
+          class="fa fa-medkit"
           :style="{ fontSize: '48px', color: 'black' }"
         ></i>
         <br />
       </div>
       Speech to Text
     </h1>
-    <div class="card">
-      <div class="card-header">
-        <button class="btn-primary" @click="App.startRecording">
-          Start Recording
-        </button>
-        <button class="btn-secondary" @click="App.clearTranscript">Clear</button>
-      </div>
-      <div class="card-body">
+    <div class="input">
+        <button class="fa fa-play" @click="App.startRecording" > </button>
+        <button class="fa fa-trash" @click="App.clearTranscript"></button>
+   </div>
+     <br>
+     <br>
+     <div class="input2">
         <input class="form-control" type="text" v-model="App.transcript" />
         <button class="button-name" @click="App.recommendationTranscript()">Search</button>
       </div>
-    </div>
+      <br>
     <div v-if="App.transcript">
       <p class="mb-2"><strong>Rekomendasi:</strong></p>
       <ul class="output">
@@ -30,13 +29,7 @@
             {{ item.name }} - {{ item.base_price }} {{ item.selling_unit }}
           </div>
           <img :src="item.image_url" />
-          <!-- <child-component :slug="item.slug"></child-component> -->
-          <!-- {{ item.slug }} -->
           <router-link class="button-name" :to="{path: '/about', query:{slug: item.slug}}">Detail</router-link>
-          <!-- <button class="button-name" @click="App.detailTranscript(item.slug), App.selectedSlug = item.slug, App.detail = true">Detail</button> -->
-          <!-- <div v-if="App.selectedSlug === item.slug">
-            <p class="detail">Detail : {{App.details.general_indication}}</p>
-          </div> -->
         </li>
       </ul>
     </div>
@@ -82,58 +75,67 @@ h1 {
   font-family: sans-serif;
 }
 
-.card {
-  border-radius: 5px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-}
-
-.card-header {
-  background-color: #007bff;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.card-header button {
-  border: none;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.card-header .btn-primary {
-  background-color: #007bff;
-}
-
-.card-header .btn-primary:hover {
-  background-color: #0069d9;
-}
-
-.card-header .btn-secondary {
-  background-color: #6c757d;
-  margin-left: 10px;
-}
-
-.card-header .btn-secondary:hover {
-  background-color: #5a6268;
-}
-
-.card-body {
-  padding: 20px;
-}
-
 .form-control {
-  border-radius: 5px;
-  border: 1px solid gray;
-  padding: 10px;
-  font-size: 16px;
-  width: 97%;
+  width: 70%;
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+button {
+  margin: 0 10px;
+ justify-content: center;
+}
+
+
+button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color:  #007bff;
+  box-shadow: 0px 15px 20px rgba(164, 187, 236, 0.812);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+button:active {
+  transform: translateY(-1px);
 }
 
 .output {
@@ -188,7 +190,6 @@ h1 {
   background-image: linear-gradient(to bottom right, #007bff, #00bcd4);
 }
 
-/* tambahan */
 .button-name {
  align-items: center;
  appearance: none;
@@ -218,6 +219,7 @@ h1 {
  white-space: nowrap;
  will-change: box-shadow,transform;
  font-size: 13px;
+ margin-bottom: 10%;
 }
 
 .button-name:focus {
