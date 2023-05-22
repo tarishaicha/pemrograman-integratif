@@ -16,10 +16,15 @@
    </div>
      <br>
      <br>
-     <div class="input2">
+     <div class="input">
         <input class="form-control" type="text" v-model="App.transcript" />
-        <button class="button-name" @click="App.recommendationTranscript()">Search</button>
       </div>
+        <br>
+        <br>
+        <div class="search">
+        <button class="fa fa-search" @click="App.recommendationTranscript()"></button>
+        </div>
+      <br>
       <br>
     <div v-if="App.transcript">
       <p class="mb-2"><strong>Rekomendasi:</strong></p>
@@ -68,6 +73,7 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+
 .container {
   max-width: 800px;
   margin: auto;
@@ -104,12 +110,15 @@ h1 {
   justify-content: center;
 }
 
+.search {
+  display: flex;
+  justify-content: center;
+}
 
 button {
   margin: 0 10px;
  justify-content: center;
 }
-
 
 button {
   padding: 1.3em 3em;
